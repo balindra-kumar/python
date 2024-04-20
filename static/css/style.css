@@ -1,0 +1,5 @@
+ul li {
+    float: left;
+    width: 120px;
+    list-style-type: lower-latin;
+}

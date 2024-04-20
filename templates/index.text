@@ -1,0 +1,40 @@
+
+   {% extends "base.html" %}
+
+   {% block content %}
+    <p>This is the paragarph text</p>
+   <ul>
+    {% for item in fetchData %}
+    <li>{{forloop.last}} . {{item}}</li>
+    {% endfor %}
+   </ul>
+
+   <p>{{details}}</p>
+
+   <table border="1" cellpadding="4">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>City</th>
+    </thead>
+    <tbody>
+        <tr>
+            {% for detail in details %}
+                {% if details|length > 0 %}
+                    {% if detail.id > 1000 %}
+                        <td>  {{detail.id}}</td>
+                        <td>{{detail.name}}</td>
+                        <td>{{detail.age}}</td>
+                        <td>{{detail.city}}</td>
+                    {% endif %}
+                    {% else %}
+                     <h3>There is no data now</h3>
+                    {% endif %}
+            {% endfor %}
+        </tr>
+     
+    </tbody>
+   </table>
+   <img src="{% static 'images/python.jpg' %}" alt="dskafjlds"/>
+   {% endblock %}
