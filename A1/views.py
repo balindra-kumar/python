@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from urllib.parse import urlencode
 from django.shortcuts import render
 def defaultPage(request):
     data ={
@@ -21,6 +23,8 @@ def defaultPage(request):
             'lastName':lastName,
             'city':city
         }
+        url = "/thank-you/?output=" + urlencode(data)
+        return HttpResponseRedirect(url)
         
     except:
         print("error")
@@ -61,3 +65,13 @@ def homePage(request):
                     ]
     }
     return render(request, 'index.html',data)
+
+def ThankYou(request):
+    if request.method == "GET":
+        data = {
+            'firstName':request.GET.get('firstName'),
+            'lastName':request.GET.get('lastName'),
+            'city': request.GET.get('city')
+        }
+        
+    return render(request, 'thank-you.html',data)

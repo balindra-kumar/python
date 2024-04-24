@@ -23,4 +23,5 @@ urlpatterns = [
     path('about/', views.about),
     path('contact/', views.contact),
     path('service/<slug:serviceid>', views.serviceDetail),
+    path('thank-you/', views.ThankYou)
 ]
